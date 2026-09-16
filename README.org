@@ -1,0 +1,29 @@
+# Adaptive Philosophy — Dev Plans
+
+*Future ideas, long-term plans, and random notes.*
+
+This repo is for things not yet active — concepts, experiments, and directions we may take later.
+
+Active work lives in the main notes repo. This one is the parking lot.
+
+#+TITLE: Dev Plans
+#+AUTHOR: Adaptive Philosophy Foundation
+#+DATE: 2026-09-16
+
+* How to use
+- Drop a new idea as its own .org file.
+- Tag with status: idea, exploring, parked, or someday.
+- Link back to active work when it connects.
+
+* Seed ideas
+- Self-serve verification system for donors (no repeated storytelling).
+- Voice "hold on" pause feature for Grok.
+- Gmail thread pinning / recent-conversation sorting.
+- Open-source AI connectors for nonprofits.
+- Discord integration for community notes.
+- Multi-vendor AI testing (X, Google, self-hosted).
+- French learning module.
+- Philosophy content pipeline.
+
+* Notes
+Everything here is public and CC0. Fork freely.
