@@ -1,0 +1,49 @@
+# GitHub Status Fix Proposal
+# Adaptive Philosophy Foundation
+# Date: 2026-09-20
+# Author: Director / apsoftwaredev
+
+* Status: DRAFT / POTENTIAL FIX
+* Related: Grok Voice orientation session, director note posted to Notion + GitHub org note.
+
+#+TITLE: Setting GitHub Profile Status from Voice / Connected Tools
+
+* Problem
+We can post director notes and org notes, but cannot currently set the GitHub profile status (the little emoji + message at the top of the profile) through Grok Voice.
+
+The connected GitHub tools expose repository file ops, gists, branches, PRs, etc., but not the GraphQL `changeUserStatus` mutation.
+
+* Goal
+Allow a voice command like:
+  "Set my GitHub status to :rocket: Up and oriented — Adaptive Philosophy ready."
+
+* Proposed Fix (manual / token-based for now)
+1. Create a personal access token (classic) with scope: `user` (or fine-grained with "Update user profile" / status permissions).
+2. Use the GraphQL mutation:
+
+   mutation {
+     changeUserStatus(input: {
+       emoji: ":rocket:",
+       message: "Up and oriented — Adaptive Philosophy ready",
+       expiresAt: "2026-09-20T23:59:59Z"
+     }) {
+       status { emoji message expiresAt }
+     }
+   }
+
+3. Curl example:
+   curl -X POST https://api.github.com/graphql \
+     -H "Authorization: bearer $TOKEN" \
+     -H "Content-Type: application/json" \
+     -d '{"query":"mutation { changeUserStatus(input:{emoji:\":rocket:\",message:\"Up and oriented — Adaptive Philosophy ready\",expiresAt:\"2026-09-20T23:59:59Z\"}){status{emoji message expiresAt}} }"}'
+
+* Future: Expose via Grok connector
+- Reconnect the GitHub integration with broader scopes so a `set_github_status` tool appears.
+- Or add a small script in this repo that the voice layer can call.
+
+* Notes
+- This is a potential fix, not yet implemented.
+- Keep it simple: emoji + short message + expiry.
+- Once money/gear lands, automate the whole orientation + status flow.
+
+#+END:
